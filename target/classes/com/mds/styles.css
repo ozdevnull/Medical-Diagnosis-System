@@ -1,0 +1,857 @@
+/* ==========================================================================
+   MDS (Medical Diagnosis System) Design System
+   Monochromatic Calm Sage-Green Palette
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Root & Background
+   -------------------------------------------------------------------------- */
+.root {
+    -fx-font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    -fx-background-color: #F3F6F1;
+}
+
+.app-root {
+    -fx-background-color: #F3F6F1;
+}
+
+/* --------------------------------------------------------------------------
+   Typography Hierarchy
+   -------------------------------------------------------------------------- */
+.brand-title {
+    -fx-font-size: 34px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #3F5A40;
+    -fx-letter-spacing: 0.5px;
+}
+
+.brand-tagline {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #6B8E6B;
+}
+
+.brand-description {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7A8B7A;
+    -fx-text-alignment: center;
+}
+
+.screen-heading {
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3F5A40;
+}
+
+.screen-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7A8B7A;
+}
+
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3F5A40;
+}
+
+.field-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #3F5A40;
+}
+
+.helper-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7A8B7A;
+}
+
+.disclaimer-text {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7A8B7A;
+    -fx-text-alignment: center;
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Buttons & Navigation
+   -------------------------------------------------------------------------- */
+.primary-button {
+    -fx-background-color: #6B8E6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 999px;
+    -fx-padding: 13px 26px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.28), 10, 0, 0, 4);
+}
+
+.primary-button:hover {
+    -fx-background-color: #3F5A40;
+    -fx-effect: dropshadow(gaussian, rgba(63, 90, 64, 0.35), 12, 0, 0, 5);
+}
+
+.primary-button:pressed {
+    -fx-background-color: #2D402E;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+.primary-button:disabled {
+    -fx-background-color: #DDE7D8;
+    -fx-text-fill: #7A8B7A;
+    -fx-effect: null;
+}
+
+.secondary-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #3F5A40;
+    -fx-border-color: #6B8E6B;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 11px 22px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.12), 8, 0, 0, 2);
+}
+
+.secondary-button:hover {
+    -fx-background-color: #DDE7D8;
+    -fx-border-color: #3F5A40;
+    -fx-text-fill: #2D402E;
+}
+
+.secondary-button:pressed {
+    -fx-background-color: #9CAF88;
+    -fx-text-fill: #FFFFFF;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Prominent, elegant pill-shaped navigation back button */
+.nav-back-button, .ghost-back-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #3F5A40;
+    -fx-border-color: #9CAF88;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-padding: 7px 18px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.18), 8, 0, 0, 2);
+}
+
+.nav-back-button:hover, .ghost-back-button:hover {
+    -fx-background-color: #DDE7D8;
+    -fx-border-color: #6B8E6B;
+    -fx-text-fill: #2D402E;
+    -fx-effect: dropshadow(gaussian, rgba(63, 90, 64, 0.25), 10, 0, 0, 3);
+}
+
+.nav-back-button:pressed, .ghost-back-button:pressed {
+    -fx-background-color: #9CAF88;
+    -fx-text-fill: #FFFFFF;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* Clear selection action button */
+.clear-button {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #7A8B7A;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-padding: 4px 12px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 4, 0, 0, 1);
+}
+
+.clear-button:hover {
+    -fx-background-color: #FDF2F2;
+    -fx-border-color: #F5D3D3;
+    -fx-text-fill: #A04A4A;
+    -fx-effect: dropshadow(gaussian, rgba(160, 74, 74, 0.15), 6, 0, 0, 2);
+}
+
+.clear-button:pressed {
+    -fx-background-color: #F9E5E5;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* Quick Fill helper button on login */
+.quick-fill-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #9CAF88;
+    -fx-border-width: 1px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-padding: 4px 14px;
+    -fx-text-fill: #3F5A40;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.10), 6, 0, 0, 1);
+}
+
+.quick-fill-button:hover {
+    -fx-background-color: #DDE7D8;
+    -fx-border-color: #6B8E6B;
+    -fx-text-fill: #2D402E;
+}
+
+.quick-fill-button:pressed {
+    -fx-background-color: #9CAF88;
+    -fx-text-fill: #FFFFFF;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* --------------------------------------------------------------------------
+   Chips and Badges
+   -------------------------------------------------------------------------- */
+.brand-chip {
+    -fx-background-color: #EBF3E8;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-padding: 4px 14px;
+    -fx-text-fill: #6B8E6B;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+}
+
+.feature-chip {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0EAE0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-padding: 6px 14px;
+    -fx-text-fill: #3F5A40;
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 6, 0, 0, 2);
+}
+
+/* --------------------------------------------------------------------------
+   Input Fields
+   -------------------------------------------------------------------------- */
+.input-field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #3F5A40;
+    -fx-prompt-text-fill: #7A8B7A;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 11px 14px;
+    -fx-font-size: 14px;
+}
+
+.input-field:focused {
+    -fx-border-color: #6B8E6B;
+    -fx-effect: dropshadow(gaussian, rgba(156, 175, 136, 0.35), 8, 0, 0, 0);
+}
+
+.search-field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #3F5A40;
+    -fx-prompt-text-fill: #7A8B7A;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-padding: 10px 18px;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 6, 0, 0, 2);
+}
+
+.search-field:focused {
+    -fx-border-color: #6B8E6B;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.25), 8, 0, 0, 0);
+}
+
+/* --------------------------------------------------------------------------
+   Cards and Containers
+   -------------------------------------------------------------------------- */
+.card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-padding: 18px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 12, 0, 0, 3);
+}
+
+/* Hero Diagnostic Card */
+.hero-card {
+    -fx-background-color: linear-gradient(to bottom right, #FFFFFF 60%, #F4F8F2 100%);
+    -fx-border-color: #D3E0CE;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px 18px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.14), 16, 0, 0, 4);
+}
+
+.hero-badge {
+    -fx-background-color: #DDE7D8;
+    -fx-text-fill: #3F5A40;
+    -fx-font-size: 10px;
+    -fx-font-weight: 800;
+    -fx-padding: 3px 10px;
+    -fx-background-radius: 999px;
+    -fx-letter-spacing: 0.5px;
+}
+
+.status-pill {
+    -fx-background-color: #EBF3E8;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-padding: 4px 10px;
+}
+
+.status-text {
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #3F5A40;
+}
+
+.avatar-circle {
+    -fx-background-color: #6B8E6B;
+    -fx-background-radius: 50%;
+    -fx-min-width: 42px;
+    -fx-min-height: 42px;
+    -fx-max-width: 42px;
+    -fx-max-height: 42px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.20), 8, 0, 0, 2);
+}
+
+.avatar-text {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Dashboard Interactive Cards */
+.dashboard-card-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-padding: 14px 18px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 12, 0, 0, 3);
+}
+
+.dashboard-card-button:hover {
+    -fx-border-color: #9CAF88;
+    -fx-background-color: #F8FAF7;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.16), 14, 0, 0, 5);
+}
+
+.dashboard-card-button:pressed {
+    -fx-background-color: #EDF3EB;
+    -fx-scale-x: 0.99;
+    -fx-scale-y: 0.99;
+}
+
+.glyph-circle {
+    -fx-background-color: #DDE7D8;
+    -fx-background-radius: 14px;
+    -fx-min-width: 44px;
+    -fx-min-height: 44px;
+    -fx-max-width: 44px;
+    -fx-max-height: 44px;
+    -fx-alignment: center;
+}
+
+.glyph-text {
+    -fx-font-size: 15px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #3F5A40;
+}
+
+.chevron-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #9CAF88;
+}
+
+/* Subtle Educational Warning Card */
+.subtle-warning-card {
+    -fx-background-color: #F8FAF7;
+    -fx-border-color: #D6E3D3;
+    -fx-border-width: 1.2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-padding: 12px 14px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.05), 8, 0, 0, 2);
+}
+
+.warning-icon-badge {
+    -fx-background-color: #E2ECE0;
+    -fx-background-radius: 50%;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-max-width: 32px;
+    -fx-max-height: 32px;
+    -fx-alignment: center;
+}
+
+/* --------------------------------------------------------------------------
+   Symptom Selection Screen
+   -------------------------------------------------------------------------- */
+.symptom-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2EAE0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+    -fx-padding: 10px 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.05), 8, 0, 0, 2);
+}
+
+.symptom-card:hover {
+    -fx-border-color: #9CAF88;
+    -fx-background-color: #F8FAF7;
+}
+
+.symptom-checkbox {
+    -fx-font-size: 14px;
+    -fx-text-fill: #3F5A40;
+    -fx-cursor: hand;
+}
+
+.symptom-checkbox > .box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #9CAF88;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 22px;
+    -fx-pref-height: 22px;
+    -fx-min-width: 22px;
+    -fx-min-height: 22px;
+}
+
+.symptom-checkbox:hover > .box {
+    -fx-border-color: #6B8E6B;
+    -fx-background-color: #F3F6F1;
+}
+
+.symptom-checkbox:selected > .box {
+    -fx-background-color: #6B8E6B;
+    -fx-border-color: #3F5A40;
+}
+
+.symptom-checkbox:selected > .box > .mark {
+    -fx-background-color: #FFFFFF;
+    -fx-shape: "M3.8 7L1.4 4.6l1.4-1.4 1 1 3.6-3.6 1.4 1.4z";
+}
+
+/* Noticeable, non-overlapping badge for symptom counter */
+.selected-count-pill {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #9CAF88;
+    -fx-border-width: 1.2px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-padding: 5px 14px;
+    -fx-text-fill: #3F5A40;
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.12), 6, 0, 0, 2);
+}
+
+/* --------------------------------------------------------------------------
+   ScrollPanes & ScrollBars
+   -------------------------------------------------------------------------- */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 6px;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #DDE7D8;
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #9CAF88;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-pref-height: 0px;
+    -fx-padding: 0px;
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal {
+    -fx-pref-height: 0px;
+    -fx-padding: 0px;
+}
+
+/* --------------------------------------------------------------------------
+   Results Screen Components
+   -------------------------------------------------------------------------- */
+.result-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-padding: 14px 16px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 10, 0, 0, 3);
+}
+
+.rank-badge {
+    -fx-background-color: #6B8E6B;
+    -fx-background-radius: 50%;
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+    -fx-alignment: center;
+}
+
+.rank-text {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFFFFF;
+}
+
+.condition-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3F5A40;
+}
+
+.match-percentage {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6B8E6B;
+}
+
+.progress-bar {
+    -fx-pref-height: 8px;
+    -fx-min-height: 8px;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #DDE7D8;
+    -fx-background-radius: 999px;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: #6B8E6B;
+    -fx-background-radius: 999px;
+    -fx-background-insets: 0;
+}
+
+.selected-symptoms-summary {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6B8E6B;
+    -fx-font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Notices, Errors, and Informational Labels
+   -------------------------------------------------------------------------- */
+.error-label {
+    -fx-text-fill: #A04A4A;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #FDF2F2;
+    -fx-background-radius: 8px;
+    -fx-border-color: #F5D3D3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+
+.info-label {
+    -fx-text-fill: #3F5A40;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-padding: 10px 14px;
+    -fx-background-color: #EBF3E8;
+    -fx-border-color: #D3E0CE;
+    -fx-border-width: 1px;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 8, 0, 0, 2);
+}
+
+.urgent-notice-card {
+    -fx-background-color: #FFF6F4;
+    -fx-border-color: #E2A69A;
+    -fx-border-width: 1px;
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+    -fx-padding: 10px 14px;
+}
+
+.urgent-notice-text {
+    -fx-text-fill: #9C3D32;
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Decorative Background Elements
+   -------------------------------------------------------------------------- */
+.decorative-blob-1 {
+    -fx-fill: #DDE7D8;
+    -fx-opacity: 0.22;
+}
+
+.decorative-blob-2 {
+    -fx-fill: #9CAF88;
+    -fx-opacity: 0.14;
+}
+
+.decorative-blob-3 {
+    -fx-fill: #6B8E6B;
+    -fx-opacity: 0.10;
+}
+
+.ring-decoration {
+    -fx-stroke: #9CAF88;
+    -fx-stroke-width: 2px;
+    -fx-fill: transparent;
+    -fx-opacity: 0.25;
+}
+
+/* --------------------------------------------------------------------------
+   Top App Bar
+   -------------------------------------------------------------------------- */
+.top-app-bar {
+    -fx-background-color: #F3F6F1;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.10), 6, 0, 0, 2);
+}
+
+/* Clearly-labelled logout button in the top app bar */
+.logout-button {
+    -fx-background-color: #FDF2F2;
+    -fx-text-fill: #A04A4A;
+    -fx-border-color: #F5D3D3;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 999px;
+    -fx-background-radius: 999px;
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-padding: 6px 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(160, 74, 74, 0.10), 6, 0, 0, 1);
+}
+
+.logout-button:hover {
+    -fx-background-color: #F9E5E5;
+    -fx-border-color: #E2A69A;
+    -fx-text-fill: #7A2020;
+    -fx-effect: dropshadow(gaussian, rgba(160, 74, 74, 0.22), 8, 0, 0, 2);
+}
+
+.logout-button:pressed {
+    -fx-background-color: #E2A69A;
+    -fx-text-fill: #FFFFFF;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* --------------------------------------------------------------------------
+   Panel Section Title
+   -------------------------------------------------------------------------- */
+.panel-section-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #3F5A40;
+}
+
+/* --------------------------------------------------------------------------
+   Panel Search Row (icon + field + button)
+   -------------------------------------------------------------------------- */
+
+/* Prefix icon sitting left of the text field */
+.search-prefix-icon {
+    -fx-font-size: 20px;
+    -fx-min-width: 32px;
+    -fx-alignment: center;
+}
+
+/* The actual text field — rounded pill shape, no double border */
+.panel-search-field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #3F5A40;
+    -fx-prompt-text-fill: #9CAF88;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 11px 14px;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.08), 6, 0, 0, 1);
+}
+
+.panel-search-field:focused {
+    -fx-border-color: #6B8E6B;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.28), 8, 0, 0, 0);
+}
+
+/* Companion search action button */
+.search-action-button {
+    -fx-background-color: #6B8E6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-background-radius: 12px;
+    -fx-padding: 11px 18px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.28), 8, 0, 0, 3);
+}
+
+.search-action-button:hover {
+    -fx-background-color: #3F5A40;
+    -fx-effect: dropshadow(gaussian, rgba(63, 90, 64, 0.35), 10, 0, 0, 4);
+}
+
+.search-action-button:pressed {
+    -fx-background-color: #2D402E;
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+/* --------------------------------------------------------------------------
+   Empty State Card
+   -------------------------------------------------------------------------- */
+.empty-state-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1px;
+    -fx-border-radius: 18px;
+    -fx-background-radius: 18px;
+    -fx-padding: 24px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.06), 10, 0, 0, 2);
+}
+
+.empty-state-icon {
+    -fx-font-size: 42px;
+}
+
+/* --------------------------------------------------------------------------
+   Bottom Navigation Bar
+   -------------------------------------------------------------------------- */
+.bottom-nav-bar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #DDE7D8;
+    -fx-border-width: 1px 0 0 0;
+    -fx-min-height: 72px;
+    -fx-max-height: 72px;
+    -fx-effect: dropshadow(gaussian, rgba(107, 142, 107, 0.12), 10, 0, -2, 0);
+}
+
+.nav-item {
+    -fx-cursor: hand;
+    -fx-padding: 8px 4px 8px 4px;
+    -fx-min-width: 80px;
+}
+
+.nav-icon-wrap {
+    -fx-background-color: transparent;
+    -fx-background-radius: 18px;
+    -fx-min-width: 52px;
+    -fx-min-height: 32px;
+    -fx-max-width: 52px;
+    -fx-max-height: 32px;
+    -fx-alignment: center;
+}
+
+.nav-icon-wrap-active {
+    -fx-background-color: #EBF3E8;
+    -fx-background-radius: 18px;
+}
+
+.nav-icon {
+    -fx-font-size: 20px;
+}
+
+/* Expanded label that appears beside icon on active (not used visually, kept for programmatic access) */
+.nav-expand-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #3F5A40;
+    -fx-padding: 0 0 0 4px;
+}
+
+.nav-caption {
+    -fx-font-size: 10px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #7A8B7A;
+    -fx-text-alignment: center;
+}
+
+.nav-caption-active {
+    -fx-font-size: 10px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #3F5A40;
+    -fx-text-alignment: center;
+}
+
+.nav-divider {
+    -fx-background-color: #DDE7D8;
+    -fx-min-width: 1px;
+    -fx-max-width: 1px;
+    -fx-min-height: 36px;
+    -fx-max-height: 36px;
+}
+
+/* --------------------------------------------------------------------------
+   Diagnosis Card Extras
+   -------------------------------------------------------------------------- */
+
+/* Numbered step badge inside the how-it-works list */
+.step-badge {
+    -fx-background-color: #6B8E6B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 11px;
+    -fx-font-weight: 800;
+    -fx-background-radius: 50%;
+    -fx-min-width: 22px;
+    -fx-min-height: 22px;
+    -fx-max-width: 22px;
+    -fx-max-height: 22px;
+    -fx-alignment: center;
+}
+
+/* Thin horizontal separator line inside a card */
+.card-separator {
+    -fx-background-color: #DDE7D8;
+    -fx-opacity: 0.7;
+}

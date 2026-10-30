@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="844.0" prefWidth="390.0" styleClass="app-root" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mds.controller.ResultsController">
+   <children>
+      <!-- Decorative Background Elements (Non-interactive) -->
+      <Circle centerX="40.0" centerY="80.0" mouseTransparent="true" radius="90.0" styleClass="decorative-blob-1" />
+      <Circle centerX="350.0" centerY="320.0" mouseTransparent="true" radius="100.0" styleClass="decorative-blob-2" />
+      <Circle centerX="50.0" centerY="720.0" mouseTransparent="true" radius="110.0" styleClass="decorative-blob-3" />
+
+      <!-- Main Structured Container: Dynamic vertical layout prevents any overlay -->
+      <VBox fx:id="mainContainer" spacing="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <!-- Fixed Top Navigation Bar -->
+            <HBox alignment="CENTER_LEFT">
+               <padding>
+                  <Insets bottom="8.0" left="20.0" right="20.0" top="16.0" />
+               </padding>
+               <children>
+                  <Button fx:id="btnBackTop" mnemonicParsing="false" onAction="#handleBackToDashboard"
+                          onMousePressed="#onBackTopPressed" onMouseReleased="#onBackTopReleased"
+                          styleClass="nav-back-button" text="← Dashboard" />
+               </children>
+            </HBox>
+
+            <!-- Scrollable Main Results Content -->
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox spacing="16.0">
+                     <padding>
+                        <Insets bottom="24.0" left="20.0" right="20.0" top="4.0" />
+                     </padding>
+                     <children>
+                        <!-- Header Section -->
+                        <VBox spacing="6.0">
+                           <children>
+                              <Label styleClass="screen-heading" text="Top 5 Possible Conditions" wrapText="true" />
+                              <VBox spacing="2.0">
+                                 <children>
+                                    <Label styleClass="helper-text" text="Based on your selected symptoms:" />
+                                    <Label fx:id="lblSelectedSymptomsSummary" styleClass="selected-symptoms-summary" text="Fever, Cough, Fatigue" wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+
+                        <!-- Urgent Condition Alert Notice -->
+                        <VBox fx:id="urgentNoticeCard" managed="false" spacing="4.0" styleClass="urgent-notice-card" visible="false">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: #9C3D32; -fx-font-size: 12px;" text="⚠️ Urgent Medical Safety Notice" />
+                              <Label fx:id="lblUrgentNoticeText" styleClass="urgent-notice-text" text="" wrapText="true" />
+                           </children>
+                        </VBox>
+
+                        <!-- Dynamic Result Cards -->
+
+                        <!-- Result Card 1 -->
+                        <VBox fx:id="resultCard1" spacing="10.0" styleClass="result-card">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <StackPane styleClass="rank-badge">
+                                       <children>
+                                          <Label fx:id="lblRank1" styleClass="rank-text" text="1" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lblDisease1" styleClass="condition-title" text="Placeholder Condition 1" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                    <Label fx:id="lblMatch1" styleClass="match-percentage" text="92% match" />
+                                 </children>
+                              </HBox>
+                              <ProgressBar fx:id="pbMatch1" maxWidth="1.7976931348623157E308" progress="0.92" />
+                              <Label fx:id="lblDescription1" styleClass="helper-text" text="Illustrative pattern match based on selected symptom profile." wrapText="true" />
+                           </children>
+                        </VBox>
+
+                        <!-- Result Card 2 -->
+                        <VBox fx:id="resultCard2" spacing="10.0" styleClass="result-card">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <StackPane styleClass="rank-badge">
+                                       <children>
+                                          <Label fx:id="lblRank2" styleClass="rank-text" text="2" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lblDisease2" styleClass="condition-title" text="Placeholder Condition 2" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                    <Label fx:id="lblMatch2" styleClass="match-percentage" text="84% match" />
+                                 </children>
+                              </HBox>
+                              <ProgressBar fx:id="pbMatch2" maxWidth="1.7976931348623157E308" progress="0.84" />
+                              <Label fx:id="lblDescription2" styleClass="helper-text" text="Correlated with upper airway and systemic indicators." wrapText="true" />
+                           </children>
+                        </VBox>
+
+                        <!-- Result Card 3 -->
+                        <VBox fx:id="resultCard3" spacing="10.0" styleClass="result-card">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <StackPane styleClass="rank-badge">
+                                       <children>
+                                          <Label fx:id="lblRank3" styleClass="rank-text" text="3" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lblDisease3" styleClass="condition-title" text="Placeholder Condition 3" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                    <Label fx:id="lblMatch3" styleClass="match-percentage" text="71% match" />
+                                 </children>
+                              </HBox>
+                              <ProgressBar fx:id="pbMatch3" maxWidth="1.7976931348623157E308" progress="0.71" />
+                              <Label fx:id="lblDescription3" styleClass="helper-text" text="Moderate alignment with respiratory irritation patterns." wrapText="true" />
+                           </children>
+                        </VBox>
+
+                        <!-- Result Card 4 -->
+                        <VBox fx:id="resultCard4" spacing="10.0" styleClass="result-card">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <StackPane styleClass="rank-badge">
+                                       <children>
+                                          <Label fx:id="lblRank4" styleClass="rank-text" text="4" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lblDisease4" styleClass="condition-title" text="Placeholder Condition 4" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                    <Label fx:id="lblMatch4" styleClass="match-percentage" text="58% match" />
+                                 </children>
+                              </HBox>
+                              <ProgressBar fx:id="pbMatch4" maxWidth="1.7976931348623157E308" progress="0.58" />
+                              <Label fx:id="lblDescription4" styleClass="helper-text" text="Secondary correlation with musculoskeletal or tension fatigue." wrapText="true" />
+                           </children>
+                        </VBox>
+
+                        <!-- Result Card 5 -->
+                        <VBox fx:id="resultCard5" spacing="10.0" styleClass="result-card">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                 <children>
+                                    <StackPane styleClass="rank-badge">
+                                       <children>
+                                          <Label fx:id="lblRank5" styleClass="rank-text" text="5" />
+                                       </children>
+                                    </StackPane>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label fx:id="lblDisease5" styleClass="condition-title" text="Placeholder Condition 5" wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                    <Label fx:id="lblMatch5" styleClass="match-percentage" text="45% match" />
+                                 </children>
+                              </HBox>
+                              <ProgressBar fx:id="pbMatch5" maxWidth="1.7976931348623157E308" progress="0.45" />
+                              <Label fx:id="lblDescription5" styleClass="helper-text" text="Baseline secondary possibility requiring clinical evaluation." wrapText="true" />
+                           </children>
+                        </VBox>
+
+                        <Separator prefWidth="200.0" />
+
+                        <!-- Medical Disclaimer -->
+                        <VBox alignment="CENTER" spacing="4.0" styleClass="card">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: #3F5A40; -fx-font-size: 12px;" text="Medical Disclaimer" />
+                              <Label styleClass="disclaimer-text" text="This is an educational frontend prototype and not a medical diagnosis. Please consult a qualified doctor or healthcare professional." wrapText="true" />
+                           </children>
+                           <padding>
+                              <Insets bottom="12.0" left="14.0" right="14.0" top="12.0" />
+                           </padding>
+                        </VBox>
+
+                        <!-- Action Buttons -->
+                        <VBox spacing="10.0">
+                           <children>
+                              <Button fx:id="btnNewDiagnosis" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                      onAction="#handleNewDiagnosis"
+                                      onMousePressed="#onNewDiagnosisPressed" onMouseReleased="#onNewDiagnosisReleased"
+                                      prefHeight="46.0" styleClass="primary-button" text="New Diagnosis" />
+                              <Button fx:id="btnBackDashboard" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                      onAction="#handleBackToDashboard"
+                                      onMousePressed="#onBackDashboardPressed" onMouseReleased="#onBackDashboardReleased"
+                                      prefHeight="44.0" styleClass="secondary-button" text="Back to Dashboard" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="844.0" prefWidth="390.0" styleClass="app-root" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mds.controller.LoginController">
+   <children>
+      <!-- Decorative Background Elements (Non-interactive) -->
+      <Circle centerX="340.0" centerY="80.0" mouseTransparent="true" radius="110.0" styleClass="decorative-blob-1" />
+      <Circle centerX="30.0" centerY="280.0" mouseTransparent="true" radius="90.0" styleClass="decorative-blob-2" />
+      <Circle centerX="360.0" centerY="750.0" mouseTransparent="true" radius="150.0" styleClass="decorative-blob-3" />
+
+      <!-- Main Structured Container: Centering login details in the viewport -->
+      <VBox spacing="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <!-- Top Navigation Bar -->
+            <HBox alignment="CENTER_LEFT">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="18.0" />
+               </padding>
+               <children>
+                  <Button fx:id="btnBack" mnemonicParsing="false" onAction="#handleBack"
+                          onMousePressed="#onBackPressed" onMouseReleased="#onBackReleased"
+                          styleClass="nav-back-button" text="← Back" />
+               </children>
+            </HBox>
+
+            <!-- Flexible Space to Center Content Vertically -->
+            <Region VBox.vgrow="ALWAYS" />
+
+            <!-- Centered Login Details Container -->
+            <VBox alignment="CENTER" spacing="12.0">
+               <padding>
+                  <Insets left="24.0" right="24.0" />
+               </padding>
+               <children>
+                  <!-- Form Card -->
+                  <VBox fx:id="formCard" spacing="16.0" styleClass="card">
+                     <children>
+                        <!-- Title & Subtitle -->
+                        <VBox spacing="3.0">
+                           <children>
+                              <Label styleClass="screen-heading" text="Welcome Back" />
+                              <Label styleClass="screen-subtitle" text="Sign in to your account" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </VBox>
+
+                        <!-- Username Field -->
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label styleClass="field-label" text="Username" />
+                              <TextField fx:id="txtUsername" promptText="Enter username" styleClass="input-field" />
+                           </children>
+                        </VBox>
+
+                        <!-- Password Field -->
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label styleClass="field-label" text="Password" />
+                              <PasswordField fx:id="txtPassword" onAction="#handleLogin" promptText="Enter password" styleClass="input-field" />
+                           </children>
+                        </VBox>
+
+                        <!-- Inline Error Notice -->
+                        <Label fx:id="lblError" managed="false" maxWidth="1.7976931348623157E308" styleClass="error-label" text="" visible="false" wrapText="true" />
+
+                        <!-- Submit Button -->
+                        <Button fx:id="btnLogin" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                onAction="#handleLogin" onMousePressed="#onLoginPressed" onMouseReleased="#onLoginReleased"
+                                prefHeight="48.0" styleClass="primary-button" text="Login">
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+
+                  <!-- Auto-fill Demo Button Separated to the Right Side -->
+                  <HBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Button fx:id="btnQuickFill" mnemonicParsing="false" onAction="#handleQuickFill"
+                                onMousePressed="#onQuickFillPressed" onMouseReleased="#onQuickFillReleased"
+                                styleClass="quick-fill-button" text="Auto-fill Demo" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+
+            <!-- Flexible Space to Center Content Vertically -->
+            <Region VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

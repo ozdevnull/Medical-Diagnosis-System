@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="844.0" prefWidth="390.0" styleClass="app-root" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mds.controller.SymptomController">
+   <children>
+      <!-- Decorative Background Elements (Non-interactive) -->
+      <Circle centerX="340.0" centerY="90.0" mouseTransparent="true" radius="90.0" styleClass="decorative-blob-1" />
+      <Circle centerX="40.0" centerY="380.0" mouseTransparent="true" radius="110.0" styleClass="decorative-blob-2" />
+      <Circle centerX="350.0" centerY="750.0" mouseTransparent="true" radius="120.0" styleClass="decorative-blob-3" />
+
+      <!-- Main Structured Container: Dynamic vertical layout prevents any overlay -->
+      <VBox fx:id="mainContainer" spacing="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <!-- Fixed Header Section -->
+            <VBox spacing="10.0">
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="16.0" />
+               </padding>
+               <children>
+                  <!-- Noticeable Pill Back Button -->
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <Button fx:id="btnBackToDashboard" mnemonicParsing="false" onAction="#handleBackToDashboard"
+                                onMousePressed="#onBackPressed" onMouseReleased="#onBackReleased"
+                                styleClass="nav-back-button" text="← Dashboard" />
+                     </children>
+                  </HBox>
+
+                  <!-- Screen Title and Instruction -->
+                  <VBox spacing="3.0">
+                     <children>
+                        <Label styleClass="screen-heading" text="Describe how you are feeling today" wrapText="true" />
+                        <Label styleClass="screen-subtitle" text="Select all symptoms that apply to you." wrapText="true" />
+                     </children>
+                  </VBox>
+
+                  <!-- Search Field -->
+                  <TextField fx:id="txtSearch" promptText="Search symptoms..." styleClass="search-field">
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </TextField>
+
+                  <!-- Status Row: Includes selection count and Clear All button -->
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label fx:id="lblSelectedCount" styleClass="selected-count-pill" text="0 symptoms selected" />
+                        <Button fx:id="btnClearAll" mnemonicParsing="false" onAction="#handleClearAll"
+                                onMousePressed="#onClearAllPressed" onMouseReleased="#onClearAllReleased"
+                                styleClass="clear-button" text="Clear All" />
+                        <Label fx:id="lblValidation" managed="false" styleClass="error-label" text="" visible="false" wrapText="true" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+
+            <!-- Scrollable 50 Static Symptom Rows: Expands to fit available space without overlapping -->
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox spacing="7.0">
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="4.0" />
+                     </padding>
+                     <children>
+                        <!-- Row 1: Fever -->
+                        <HBox fx:id="rowFever" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbFever" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Fever" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 2: Chills -->
+                        <HBox fx:id="rowChills" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbChills" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Chills" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 3: Headache -->
+                        <HBox fx:id="rowHeadache" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbHeadache" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Headache" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 4: Fatigue -->
+                        <HBox fx:id="rowFatigue" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbFatigue" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Fatigue" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 5: Weakness -->
+                        <HBox fx:id="rowWeakness" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbWeakness" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Weakness" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 6: Dizziness -->
+                        <HBox fx:id="rowDizziness" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbDizziness" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Dizziness" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 7: Nausea -->
+                        <HBox fx:id="rowNausea" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbNausea" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Nausea" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 8: Vomiting -->
+                        <HBox fx:id="rowVomiting" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbVomiting" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Vomiting" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 9: Loss of appetite -->
+                        <HBox fx:id="rowLossOfAppetite" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbLossOfAppetite" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Loss of appetite" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 10: Abdominal pain -->
+                        <HBox fx:id="rowAbdominalPain" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbAbdominalPain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Abdominal pain" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 11: Diarrhea -->
+                        <HBox fx:id="rowDiarrhea" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbDiarrhea" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Diarrhea" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 12: Constipation -->
+                        <HBox fx:id="rowConstipation" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbConstipation" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Constipation" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 13: Cough -->
+                        <HBox fx:id="rowCough" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbCough" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Cough" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 14: Dry cough -->
+                        <HBox fx:id="rowDryCough" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbDryCough" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Dry cough" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 15: Phlegm -->
+                        <HBox fx:id="rowPhlegm" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbPhlegm" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Phlegm" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 16: Sore throat -->
+                        <HBox fx:id="rowSoreThroat" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbSoreThroat" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Sore throat" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 17: Runny nose -->
+                        <HBox fx:id="rowRunnyNose" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbRunnyNose" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Runny nose" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 18: Stuffy nose -->
+                        <HBox fx:id="rowStuffyNose" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbStuffyNose" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Stuffy nose" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 19: Sneezing -->
+                        <HBox fx:id="rowSneezing" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbSneezing" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Sneezing" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 20: Shortness of breath -->
+                        <HBox fx:id="rowShortnessOfBreath" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbShortnessOfBreath" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Shortness of breath" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 21: Chest pain -->
+                        <HBox fx:id="rowChestPain" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbChestPain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Chest pain" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 22: Wheezing -->
+                        <HBox fx:id="rowWheezing" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbWheezing" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Wheezing" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 23: Muscle pain -->
+                        <HBox fx:id="rowMusclePain" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbMusclePain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Muscle pain" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 24: Joint pain -->
+                        <HBox fx:id="rowJointPain" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbJointPain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Joint pain" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 25: Back pain -->
+                        <HBox fx:id="rowBackPain" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbBackPain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Back pain" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 26: Sweating -->
+                        <HBox fx:id="rowSweating" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbSweating" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Sweating" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 27: Skin rash -->
+                        <HBox fx:id="rowSkinRash" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbSkinRash" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Skin rash" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 28: Itching -->
+                        <HBox fx:id="rowItching" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbItching" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Itching" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 29: Red eyes -->
+                        <HBox fx:id="rowRedEyes" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbRedEyes" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Red eyes" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 30: Watery eyes -->
+                        <HBox fx:id="rowWateryEyes" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbWateryEyes" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Watery eyes" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 31: Loss of smell -->
+                        <HBox fx:id="rowLossOfSmell" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbLossOfSmell" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Loss of smell" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 32: Loss of taste -->
+                        <HBox fx:id="rowLossOfTaste" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbLossOfTaste" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Loss of taste" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 33: Ear pain -->
+                        <HBox fx:id="rowEarPain" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbEarPain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Ear pain" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 34: Frequent urination -->
+                        <HBox fx:id="rowFrequentUrination" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbFrequentUrination" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Frequent urination" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 35: Painful urination -->
+                        <HBox fx:id="rowPainfulUrination" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbPainfulUrination" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Painful urination" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 36: Increased thirst -->
+                        <HBox fx:id="rowIncreasedThirst" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbIncreasedThirst" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Increased thirst" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 37: Swelling -->
+                        <HBox fx:id="rowSwelling" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbSwelling" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Swelling" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 38: Palpitations -->
+                        <HBox fx:id="rowPalpitations" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbPalpitations" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Palpitations" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 39: Blurred vision -->
+                        <HBox fx:id="rowBlurredVision" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbBlurredVision" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Blurred vision" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 40: Difficulty sleeping -->
+                        <HBox fx:id="rowDifficultySleeping" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbDifficultySleeping" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Difficulty sleeping" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 41: Anxiety/restlessness -->
+                        <HBox fx:id="rowAnxietyRestlessness" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbAnxietyRestlessness" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Anxiety/restlessness" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 42: Yellowing of skin/eyes -->
+                        <HBox fx:id="rowYellowingOfSkinEyes" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbYellowingOfSkinEyes" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Yellowing of skin/eyes" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 43: Dark urine -->
+                        <HBox fx:id="rowDarkUrine" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbDarkUrine" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Dark urine" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 44: Pale stools -->
+                        <HBox fx:id="rowPaleStools" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbPaleStools" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Pale stools" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 45: Neck stiffness -->
+                        <HBox fx:id="rowNeckStiffness" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbNeckStiffness" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Neck stiffness" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 46: Sensitivity to light -->
+                        <HBox fx:id="rowSensitivityToLight" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbSensitivityToLight" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Sensitivity to light" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 47: Hair loss -->
+                        <HBox fx:id="rowHairLoss" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbHairLoss" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Hair loss" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 48: Sore muscles -->
+                        <HBox fx:id="rowSoreMuscles" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbSoreMuscles" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Sore muscles" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 49: Heartburn -->
+                        <HBox fx:id="rowHeartburn" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbHeartburn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Heartburn" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+
+                        <!-- Row 50: Bloating -->
+                        <HBox fx:id="rowBloating" alignment="CENTER_LEFT" styleClass="symptom-card">
+                           <children>
+                              <CheckBox fx:id="cbBloating" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="symptom-checkbox" text="Bloating" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+
+            <!-- Fixed Bottom Actions Bar: Dedicated space ensures button is never blocked -->
+            <VBox alignment="CENTER" spacing="6.0">
+               <padding>
+                  <Insets bottom="18.0" left="20.0" right="20.0" top="12.0" />
+               </padding>
+               <children>
+                  <Button fx:id="btnStartAnalysis" maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                          onAction="#handleStartAnalysis"
+                          onMousePressed="#onAnalysisPressed" onMouseReleased="#onAnalysisReleased"
+                          prefHeight="48.0" styleClass="primary-button" text="Start Analysis" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,60 @@
+-- ============================================================================
+-- Medical Diagnosis System (MDS) — Seed 50 Standard Symptoms
+-- Exact display names corresponding to SymptomController.java
+-- ============================================================================
+
+USE `providencedb`;
+
+INSERT INTO `symptoms` (`symptom_id`, `symptom_name`, `description`) VALUES
+(1, 'Fever', 'Elevated core body temperature above normal daily baseline (typically ≥ 38.0°C or 100.4°F), indicating systemic immune activation.'),
+(2, 'Chills', 'Involuntary muscular shivering and sensation of profound cold, commonly accompanying rising fever or systemic infection.'),
+(3, 'Headache', 'Pain or discomfort localized in the head, scalp, cranial temples, or upper cervical region.'),
+(4, 'Fatigue', 'Overwhelming subjective feeling of tiredness, lethargy, or lack of energy unrelieved by rest.'),
+(5, 'Weakness', 'Reduced physical muscular power or generalized physical asthenia affecting daily functional exertion.'),
+(6, 'Dizziness', 'Sensation of lightheadedness, faintness, unsteady equilibrium, or impending syncope.'),
+(7, 'Nausea', 'Unpleasant subjective epigastric sensation with an urge or reflex inclination to vomit.'),
+(8, 'Vomiting', 'Forceful oral expulsion of gastrointestinal gastric contents via coordinated retroperistalsis.'),
+(9, 'Loss of appetite', 'Marked reduction in hunger sensation or desire for food intake (anorexia).'),
+(10, 'Abdominal pain', 'Visceral or somatic cramping, aching, or sharp discomfort in the abdominal or pelvic area.'),
+(11, 'Diarrhea', 'Frequent passage of abnormally loose, watery stools occurring three or more times per day.'),
+(12, 'Constipation', 'Infrequent bowel movements (fewer than three per week) or difficult passage of hard, dry stools.'),
+(13, 'Cough', 'Protective respiratory reflex clearing airway irritants, foreign particles, or tracheobronchial fluids.'),
+(14, 'Dry cough', 'Persistent, tickling cough without production of mucus or tracheobronchial sputum.'),
+(15, 'Phlegm', 'Thick tracheobronchial mucus or sputum expectorated from the respiratory tract.'),
+(16, 'Sore throat', 'Painful, dry, raw, or scratchy discomfort in the pharynx, aggravated by swallowing (odynophagia).'),
+(17, 'Runny nose', 'Excessive thin watery discharge or drainage from nasal mucosa (rhinorrhea).'),
+(18, 'Stuffy nose', 'Sensation of nasal obstruction or reduced airway patency caused by mucosal hyperemia or edema.'),
+(19, 'Sneezing', 'Sudden involuntary convulsive expulsion of air from nose and mouth provoked by nasopharyngeal irritation.'),
+(20, 'Shortness of breath', 'Subjective sensation of difficult, uncomfortable, or labored breathing (dyspnea).'),
+(21, 'Chest pain', 'Discomfort, pressure, tightness, squeezing, or aching localized across the anterior thorax or precordium.'),
+(22, 'Wheezing', 'High-pitched whistling sound during expiration produced by airflow through narrowed intrathoracic airways.'),
+(23, 'Muscle pain', 'Aching tenderness, stiffness, or soreness distributed across skeletal muscle groups (myalgia).'),
+(24, 'Joint pain', 'Pain, stiffness, tenderness, or inflammation in one or multiple articulating skeletal joints (arthralgia).'),
+(25, 'Back pain', 'Aching, stiffness, or sharp discomfort localized in the cervical, thoracic, or lumbar spine.'),
+(26, 'Sweating', 'Excessive diaphoresis or night sweats exceeding thermoregulatory physiological requirements.'),
+(27, 'Skin rash', 'Visible change in color, texture, or eruptive morphology of the skin (maculopapular, vesicular, or erythematous).'),
+(28, 'Itching', 'Irritating cutaneomucosal sensation provoking a compelling urge to scratch (pruritus).'),
+(29, 'Red eyes', 'Hyperemia of bulbar or palpebral conjunctival microvessels causing noticeable vascular erythema.'),
+(30, 'Watery eyes', 'Excessive lacrimation or tearing caused by ocular surface irritation, allergy, or nasolacrimal obstruction.'),
+(31, 'Loss of smell', 'Partial or complete impairment in the perception of olfactory scents (anosmia or hyposmia).'),
+(32, 'Loss of taste', 'Impairment or absence of gustatory taste perception (ageusia or hypogeusia).'),
+(33, 'Ear pain', 'Sharp, dull, or throbbing otic discomfort originating from outer, middle, or mastoid structures (otalgia).'),
+(34, 'Frequent urination', 'Need to urinate more frequently than ordinary diurnal intervals (pollakiuria).'),
+(35, 'Painful urination', 'Burning, stinging, or scalding discomfort experienced during or immediately following micturition (dysuria).'),
+(36, 'Increased thirst', 'Excessive, persistent subjective sensation of dry mouth and urge to drink fluids (polydipsia).'),
+(37, 'Swelling', 'Abnormal fluid accumulation in interstitial soft tissues producing localized or generalized tumefaction (edema).'),
+(38, 'Palpitations', 'Subjective conscious perception of irregular, racing, pounding, or fluttering heartbeat.'),
+(39, 'Blurred vision', 'Loss of visual acuity or sharp image clarity affecting one or both eyes.'),
+(40, 'Difficulty sleeping', 'Impairment in initiating, consolidating, or sustaining restful sleep (insomnia).'),
+(41, 'Anxiety/restlessness', 'Persistent excessive feelings of apprehension, nervous tension, somatic unease, or motor restlessness.'),
+(42, 'Yellowing of skin/eyes', 'Yellow pigmentation of dermis, mucosal membranes, and sclera resulting from hyperbilirubinemia (jaundice).'),
+(43, 'Dark urine', 'Amber, tea-colored, or brown discoloration of urine indicative of bilirubinuria, hematuria, or concentrated state.'),
+(44, 'Pale stools', 'Clay-colored, grayish, or acholic feces caused by obstructive reduction in biliary stercobilin excretion.'),
+(45, 'Neck stiffness', 'Marked resistance or painful restriction to passive or active anterior cervical flexion (nuchal rigidity).'),
+(46, 'Sensitivity to light', 'Intolerance or discomfort provoked by ordinary ambient or bright ocular illumination (photophobia).'),
+(47, 'Hair loss', 'Accelerated shedding, thinning, or focal patchy reduction of scalp or body hair (alopecia / effluvium).'),
+(48, 'Sore muscles', 'Post-exertional or inflammatory tenderness, stiffness, and soreness localized across muscular fibers.'),
+(49, 'Heartburn', 'Substernal burning discomfort ascending retrosternally from epigastrium toward pharynx (pyrosis).'),
+(50, 'Bloating', 'Subjective sensation of abdominal fullness, gaseous distention, or measurable tight abdominal swelling.')
+ON DUPLICATE KEY UPDATE
+  `description` = VALUES(`description`);

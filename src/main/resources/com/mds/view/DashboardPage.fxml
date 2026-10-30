@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="844.0" prefWidth="390.0" styleClass="app-root" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mds.controller.DashboardController">
+   <children>
+      <!-- Decorative Background Blobs -->
+      <Circle centerX="40.0" centerY="90.0" mouseTransparent="true" radius="90.0" styleClass="decorative-blob-1" />
+      <Circle centerX="360.0" centerY="320.0" mouseTransparent="true" radius="110.0" styleClass="decorative-blob-2" />
+      <Circle centerX="50.0" centerY="680.0" mouseTransparent="true" radius="75.0" styleClass="decorative-blob-1" />
+
+      <!-- ═══════════════════════════════════════════════════════════════════
+           ROOT LAYOUT: Top App Bar ▸ Content Area ▸ Bottom Nav Bar
+           ═══════════════════════════════════════════════════════════════════ -->
+      <VBox spacing="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+
+            <!-- ╔══════════════════ TOP APP BAR ══════════════════╗ -->
+            <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="top-app-bar">
+               <padding>
+                  <Insets bottom="12.0" left="20.0" right="16.0" top="16.0" />
+               </padding>
+               <children>
+
+                  <!-- Avatar circle -->
+                  <StackPane styleClass="avatar-circle">
+                     <children>
+                        <Label fx:id="lblAvatarInitial" styleClass="avatar-text" text="A" />
+                     </children>
+                  </StackPane>
+
+                  <!-- Greeting text -->
+                  <VBox alignment="CENTER_LEFT" spacing="1.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="lblWelcome" styleClass="screen-heading" text="Hello, admin" />
+                        <Label styleClass="screen-subtitle" text="Personal Health Assistant" />
+                     </children>
+                  </VBox>
+
+                  <!-- Logout button — labelled and clearly visible -->
+                  <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#handleLogout"
+                          onMousePressed="#onLogoutPressed" onMouseReleased="#onLogoutReleased"
+                          styleClass="logout-button" text="⎋  Log Out" />
+               </children>
+            </HBox>
+            <!-- ╚═════════════════════════════════════════════════╝ -->
+
+            <!-- ╔══════════════════ CONTENT PANELS ═══════════════╗ -->
+            <StackPane VBox.vgrow="ALWAYS">
+               <children>
+
+                  <!-- ──────────────────────────────────────────────
+                       PANEL 1 · DIAGNOSIS
+                       ────────────────────────────────────────────── -->
+                  <ScrollPane fx:id="paneDiagnosis" fitToWidth="true" hbarPolicy="NEVER" managed="true" styleClass="scroll-pane" visible="true">
+                     <content>
+                        <VBox spacing="16.0">
+                           <padding>
+                              <Insets bottom="28.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+
+                              <!-- Section header -->
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label styleClass="panel-section-title" text="Clinical Triage" />
+                                    <Label styleClass="helper-text" text="Assess your symptoms with our 50-point clinical tool." wrapText="true" />
+                                 </children>
+                              </VBox>
+
+                              <!-- Informational message (hidden by default) -->
+                              <Label fx:id="lblInfoMessage" managed="false" maxWidth="1.7976931348623157E308" styleClass="info-label" text="" visible="false" wrapText="true" />
+
+                              <!-- ── Hero Assessment Card ── -->
+                              <VBox spacing="16.0" styleClass="hero-card">
+                                 <children>
+
+                                    <!-- Badge row -->
+                                    <HBox alignment="CENTER_LEFT">
+                                       <children>
+                                          <Label styleClass="hero-badge" text="CLINICAL TRIAGE" />
+                                          <Region HBox.hgrow="ALWAYS" />
+                                          <Label styleClass="helper-text" text="50 Symptoms" />
+                                       </children>
+                                    </HBox>
+
+                                    <!-- Title + description -->
+                                    <VBox spacing="6.0">
+                                       <children>
+                                          <Label styleClass="section-title" text="Symptom Assessment" />
+                                          <Label styleClass="helper-text" text="Select the symptoms you are experiencing and receive an evidence-based differential assessment." wrapText="true" />
+                                       </children>
+                                    </VBox>
+
+                                    <!-- How it works sub-section -->
+                                    <VBox spacing="8.0">
+                                       <children>
+                                          <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #3F5A40;" text="How it works" />
+
+                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label styleClass="step-badge" text="1" />
+                                                <Label styleClass="helper-text" text="Select all symptoms you are currently experiencing." wrapText="true" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label styleClass="step-badge" text="2" />
+                                                <Label styleClass="helper-text" text="Our system matches your profile against known conditions." wrapText="true" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label styleClass="step-badge" text="3" />
+                                                <Label styleClass="helper-text" text="Review ranked results with match scores and details." wrapText="true" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+
+                                    <!-- Separator line -->
+                                    <Region maxHeight="1.0" minHeight="1.0" styleClass="card-separator" />
+
+                                    <!-- CTA Button -->
+                                    <Button fx:id="btnStartDiagnosis" maxWidth="1.7976931348623157E308"
+                                            mnemonicParsing="false" onAction="#handleStartDiagnosis"
+                                            onMousePressed="#onStartDiagnosisPressed"
+                                            onMouseReleased="#onStartDiagnosisReleased"
+                                            prefHeight="50.0" styleClass="primary-button"
+                                            text="Begin Symptom Assessment  →" />
+
+                                 </children>
+                              </VBox>
+
+                              <!-- ── Feature stat chips ── -->
+                              <HBox alignment="CENTER" spacing="10.0" />
+
+                              <!-- ── Educational notice ── -->
+                              <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="subtle-warning-card">
+                                 <children>
+                                    <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-font-size: 11px; -fx-text-fill: #3F5A40;" text="⚠  Educational Assistant Only" />
+                                          <Label styleClass="helper-text" text="This prototype is for educational health exploration only and does not provide clinical diagnoses or medical advice." wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+
+                              <!-- Footer tag -->
+                              <Label maxWidth="1.7976931348623157E308" style="-fx-text-alignment: center; -fx-alignment: center;" styleClass="helper-text" text="MDS • Educational Health Prototype v1.0" />
+
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+
+                  <!-- ──────────────────────────────────────────────
+                       PANEL 2 · SEARCH DISEASES
+                       ────────────────────────────────────────────── -->
+                  <ScrollPane fx:id="paneSearchDiseases" fitToWidth="true" hbarPolicy="NEVER" managed="false" styleClass="scroll-pane" visible="false">
+                     <content>
+                        <VBox spacing="16.0">
+                           <padding>
+                              <Insets bottom="28.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+
+                              <!-- Section header -->
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label styleClass="panel-section-title" text="Disease Search" />
+                                    <Label styleClass="helper-text" text="Look up conditions, etiology &amp; risk factors." wrapText="true" />
+                                 </children>
+                              </VBox>
+
+                              <!-- ── Search Row: icon + field + button ── -->
+                              <HBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <!-- Text field -->
+                                    <TextField fx:id="tfDiseaseSearch" onKeyReleased="#handleDiseaseSearchTyped" promptText="Search diseases, conditions…" styleClass="panel-search-field" HBox.hgrow="ALWAYS" />
+
+                                    <!-- Search button -->
+                                    <Button fx:id="btnDiseaseSearch" mnemonicParsing="false"
+                                            onAction="#handleDiseaseSearch"
+                                            onMousePressed="#onDiseaseSearchPressed"
+                                            onMouseReleased="#onDiseaseSearchReleased"
+                                            styleClass="search-action-button" text="Search" />
+                                 </children>
+                              </HBox>
+
+                              <!-- Results / empty state -->
+                              <VBox fx:id="diseaseResultsBox" spacing="10.0">
+                                 <children>
+                                    <VBox alignment="CENTER" minHeight="220.0" spacing="12.0" styleClass="empty-state-card">
+                                       <children>
+                                          <Label styleClass="empty-state-icon" text="🔬" />
+                                          <Label styleClass="section-title" text="Search for a Disease" />
+                                          <Label maxWidth="240.0" style="-fx-text-alignment: center;" styleClass="helper-text" text="Type a condition name in the search bar above and press Search." wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+
+                  <!-- ──────────────────────────────────────────────
+                       PANEL 3 · SEARCH MEDICINE
+                       ────────────────────────────────────────────── -->
+                  <ScrollPane fx:id="paneSearchMedicine" fitToWidth="true" hbarPolicy="NEVER" managed="false" styleClass="scroll-pane" visible="false">
+                     <content>
+                        <VBox spacing="16.0">
+                           <padding>
+                              <Insets bottom="28.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                           <children>
+
+                              <!-- Section header -->
+                              <VBox spacing="4.0">
+                                 <children>
+                                    <Label styleClass="panel-section-title" text="Medicine Search" />
+                                    <Label styleClass="helper-text" text="Browse the pharmaceutical index &amp; clinical guidelines." wrapText="true" />
+                                 </children>
+                              </VBox>
+
+                              <!-- ── Search Row: icon + field + button ── -->
+                              <HBox alignment="CENTER" spacing="8.0">
+                                 <children>
+                                    <!-- Text field -->
+                                    <TextField fx:id="tfMedicineSearch" onKeyReleased="#handleMedicineSearchTyped" promptText="Search medicines, drugs…" styleClass="panel-search-field" HBox.hgrow="ALWAYS" />
+
+                                    <!-- Search button -->
+                                    <Button fx:id="btnMedicineSearch" mnemonicParsing="false"
+                                            onAction="#handleMedicineSearch"
+                                            onMousePressed="#onMedicineSearchPressed"
+                                            onMouseReleased="#onMedicineSearchReleased"
+                                            styleClass="search-action-button" text="Search" />
+                                 </children>
+                              </HBox>
+
+                              <!-- Results / empty state -->
+                              <VBox fx:id="medicineResultsBox" spacing="10.0">
+                                 <children>
+                                    <VBox alignment="CENTER" minHeight="220.0" spacing="12.0" styleClass="empty-state-card">
+                                       <children>
+                                          <Label styleClass="empty-state-icon" text="💊" />
+                                          <Label styleClass="section-title" text="Search for a Medicine" />
+                                          <Label maxWidth="240.0" style="-fx-text-alignment: center;" styleClass="helper-text" text="Type a drug or medicine name in the search bar above and press Search." wrapText="true" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+
+               </children>
+            </StackPane>
+            <!-- ╚═════════════════════════════════════════════════╝ -->
+
+            <!-- ╔══════════════════ BOTTOM NAV BAR ══════════════════╗ -->
+            <HBox fx:id="bottomNavBar" alignment="CENTER" spacing="0.0" styleClass="bottom-nav-bar">
+               <children>
+
+                  <!-- Nav 1: Diagnosis -->
+                  <VBox fx:id="navDiagnosis" alignment="CENTER" onMouseClicked="#handleNavDiagnosis" spacing="3.0" styleClass="nav-item" HBox.hgrow="ALWAYS">
+                     <children>
+                        <StackPane fx:id="navDiagnosisIconWrap" alignment="CENTER" styleClass="nav-icon-wrap">
+                           <children>
+                              <Label styleClass="nav-icon" text="🩺" />
+                              <Label fx:id="navDiagnosisLabel" managed="false" styleClass="nav-expand-label" text="Diagnosis" visible="false" />
+                           </children>
+                        </StackPane>
+                        <Label fx:id="navDiagnosisCaption" styleClass="nav-caption-active" text="Diagnosis" />
+                     </children>
+                  </VBox>
+
+                  <Region styleClass="nav-divider" />
+
+                  <!-- Nav 2: Search Diseases -->
+                  <VBox fx:id="navDiseases" alignment="CENTER" onMouseClicked="#handleNavDiseases" spacing="3.0" styleClass="nav-item" HBox.hgrow="ALWAYS">
+                     <children>
+                        <StackPane fx:id="navDiseasesIconWrap" alignment="CENTER" styleClass="nav-icon-wrap">
+                           <children>
+                              <Label styleClass="nav-icon" text="🔬" />
+                              <Label fx:id="navDiseasesLabel" managed="false" styleClass="nav-expand-label" text="Diseases" visible="false" />
+                           </children>
+                        </StackPane>
+                        <Label fx:id="navDiseasesCaption" styleClass="nav-caption" text="Diseases" />
+                     </children>
+                  </VBox>
+
+                  <Region styleClass="nav-divider" />
+
+                  <!-- Nav 3: Search Medicine -->
+                  <VBox fx:id="navMedicine" alignment="CENTER" onMouseClicked="#handleNavMedicine" spacing="3.0" styleClass="nav-item" HBox.hgrow="ALWAYS">
+                     <children>
+                        <StackPane fx:id="navMedicineIconWrap" alignment="CENTER" styleClass="nav-icon-wrap">
+                           <children>
+                              <Label styleClass="nav-icon" text="💊" />
+                              <Label fx:id="navMedicineLabel" managed="false" styleClass="nav-expand-label" text="Medicines" visible="false" />
+                           </children>
+                        </StackPane>
+                        <Label fx:id="navMedicineCaption" styleClass="nav-caption" text="Medicine" />
+                     </children>
+                  </VBox>
+
+               </children>
+            </HBox>
+            <!-- ╚═════════════════════════════════════════════════╝ -->
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

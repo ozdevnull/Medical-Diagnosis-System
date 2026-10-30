@@ -1,0 +1,283 @@
+-- ============================================================================
+-- Medical Diagnosis System (MDS) — Seed Medically Grounded Diseases
+-- Grounded references: WHO / CDC / NHS / MedlinePlus
+-- ============================================================================
+
+USE `providencedb`;
+
+INSERT INTO `diseases` (`disease_id`, `disease_name`, `description`, `causes`, `precautions`, `severity_information`, `reference_source`) VALUES
+(1, 'Common cold',
+ 'A viral infectious disease of the upper respiratory tract primarily affecting the mucosal membranes of the nose, throat, sinuses, and larynx.',
+ 'Rhinoviruses (>50% of cases), coronaviruses, respiratory syncytial virus, parainfluenza viruses.',
+ 'Adequate hydration, warm saline gargles, adequate sleep, hand hygiene, and symptomatic antipyretics if fever develops.',
+ 'Mild / Self-limiting', 'CDC / NHS Guidelines'),
+
+(2, 'Influenza',
+ 'An acute contagious viral infection of the respiratory tract characterized by abrupt onset of systemic fevers, myalgias, and respiratory inflammation.',
+ 'Influenza viruses type A, B, and rarely C transmitted through respiratory droplets or aerosolized contact.',
+ 'Strict bed rest, oral fluids, avoidance of contact with vulnerable individuals, seeking antiviral assessment if high-risk.',
+ 'Moderate to Severe', 'WHO / CDC Influenza Guidelines'),
+
+(3, 'COVID-19',
+ 'A systemic respiratory illness caused by severe acute respiratory syndrome coronavirus 2 with wide clinical spectrum from mild upper respiratory irritation to hypoxia.',
+ 'Infection with SARS-CoV-2 via respiratory droplet inhalation and mucosal surface transmission.',
+ 'Self-isolation, pulse oximetry monitoring, adequate hydration, medical evaluation if oxygen saturation decreases or breathlessness occurs.',
+ 'Moderate to Critical', 'WHO / CDC COVID-19 Clinical Management'),
+
+(4, 'Acute bronchitis',
+ 'Transient inflammatory swelling of the large bronchial airways and tracheobronchial tree with productive cough.',
+ 'Viral pathogens (influenza, parainfluenza, adenovirus, rhinovirus), smoke exposure, environmental chemical irritants.',
+ 'Avoidance of smoke and airborne particulates, increased fluid intake, humidified air, and steam inhalation.',
+ 'Moderate', 'NHS / MedlinePlus'),
+
+(5, 'Pneumonia',
+ 'Infection inflaming the air sacs in one or both lungs, which may fill with fluid or purulent exudate causing impaired gas exchange.',
+ 'Streptococcus pneumoniae, Mycoplasma pneumoniae, respiratory viruses (influenza, RSV), fungal inhalation.',
+ 'Urgent medical physician assessment, prescription antimicrobial therapy when indicated, rest, hydration, monitoring for chest tightness.',
+ 'Severe to Critical', 'WHO Pneumonia Fact Sheet / ATS Guidelines'),
+
+(6, 'Asthma',
+ 'A chronic inflammatory disorder of the conducting airways characterized by bronchial hyperresponsiveness, reversible airflow obstruction, and bronchospasm.',
+ 'Genetic atopy, environmental allergens (pollen, dust mites), cold air, viral respiratory illness, vigorous physical exertion.',
+ 'Keep prescribed inhaled bronchodilators accessible, avoid known triggers, follow an Asthma Action Plan, seek emergent care for acute dyspnea.',
+ 'Moderate to Severe', 'GINA Global Strategy for Asthma Management'),
+
+(7, 'Allergic rhinitis',
+ 'Immunologically mediated inflammatory response of the nasal mucous membranes provoked by airborne allergen exposure.',
+ 'Type I IgE-mediated hypersensitivity to aeroallergens including tree/grass pollen, animal dander, mold spores, and house dust mites.',
+ 'Minimizing allergen exposure, saline nasal rinses, second-generation oral antihistamines, keeping windows closed during high pollen counts.',
+ 'Mild to Moderate', 'NHS / American Academy of Allergy, Asthma & Immunology'),
+
+(8, 'Sinusitis',
+ 'Inflammation and congestion of the mucosal lining of the paranasal sinuses impairing mucus clearance.',
+ 'Viral upper respiratory tract infection complication, secondary bacterial overgrowth (Streptococcus pneumoniae, Moraxella), nasal polyps.',
+ 'Warm facial compresses, nasal saline irrigation, adequate hydration, elevation of head during sleep, physician review if persisting > 10 days.',
+ 'Moderate', 'MedlinePlus / NHS'),
+
+(9, 'Pharyngitis',
+ 'Acute inflammation of the mucosal membranes of the pharynx manifesting with intense throat pain and painful swallowing.',
+ 'Viral infections (rhinovirus, adenovirus, EBV) or Group A beta-hemolytic Streptococcus bacteria.',
+ 'Warm salt water gargles, cold or warm soothing fluids, avoidance of tobacco smoke, clinical throat swab evaluation if high fever.',
+ 'Mild to Moderate', 'CDC Group A Strep Guidelines'),
+
+(10, 'Tonsillitis',
+ 'Inflammation and swelling of the palatine tonsils often accompanied by exudate, cervical lymphadenopathy, and odynophagia.',
+ 'Streptococcus pyogenes (Group A Strep), Epstein-Barr virus, enteroviruses, adenoviruses.',
+ 'Rest, soft food intake, analgesics, cool fluids, clinical assessment for antibiotic requirement or peritonsillar abscess rule-out.',
+ 'Moderate', 'NHS / MedlinePlus'),
+
+(11, 'Tuberculosis',
+ 'A chronic bacterial infection primarily targeting pulmonary lung parenchyma with potential extrapulmonary dissemination.',
+ 'Mycobacterium tuberculosis transmitted through aerosolized droplet nuclei produced by active pulmonary cases.',
+ 'Strict completion of multi-drug antimycobacterial therapy course, respiratory isolation during infectious phase, nutritional repletion.',
+ 'Severe to Chronic', 'WHO Global Tuberculosis Report'),
+
+(12, 'Gastroenteritis',
+ 'Inflammation of the stomach and small/large intestines presenting with acute diarrhea, vomiting, and abdominal cramping.',
+ 'Viral agents (norovirus, rotavirus), bacterial enteropathogens, contaminated water or foodborne toxins.',
+ 'Oral rehydration solution (ORS) in small frequent sips, maintaining electrolyte balance, gradual reintroduction of bland diet, hygiene.',
+ 'Moderate', 'WHO Diarrhoeal Disease Guidance / NHS'),
+
+(13, 'Food poisoning',
+ 'Acute gastrointestinal intoxication or mucosal invasion caused by ingestion of food contaminated with toxins or pathogens.',
+ 'Preformed bacterial toxins (Staphylococcus aureus, Bacillus cereus) or microbial contamination (Salmonella, Campylobacter, E. coli).',
+ 'Aggressive fluid and electrolyte repletion, rest, avoiding dairy/fatty foods, seeking urgent medical attention if blood is in stool.',
+ 'Moderate to Severe', 'CDC Food Safety Guidelines'),
+
+(14, 'Gastritis',
+ 'Inflammatory erosion or irritation of the mucosal gastric lining of the stomach.',
+ 'Helicobacter pylori infection, regular nonsteroidal anti-inflammatory drug (NSAID) usage, excessive alcohol consumption, physiological stress.',
+ 'Eliminate gastric irritants (alcohol, coffee, spicy foods, NSAIDs), smaller frequent meals, acid suppression therapy under medical advice.',
+ 'Moderate', 'MedlinePlus / NIDDK'),
+
+(15, 'Gastroesophageal reflux disease (GERD)',
+ 'A chronic digestive condition where stomach acid or bile frequently flows retrograde back into the esophageal lumen.',
+ 'Transient lower esophageal sphincter relaxations, hiatal hernia, delayed gastric emptying, increased intra-abdominal pressure.',
+ 'Elevating bed head, avoiding lying down within 3 hours after meals, limiting citrus/caffeine/chocolate/fatty foods, weight moderation.',
+ 'Moderate', 'American College of Gastroenterology / NHS'),
+
+(16, 'Irritable bowel syndrome (IBS)',
+ 'A common functional gastrointestinal motility disorder characterized by recurrent abdominal pain linked to altered defecation.',
+ 'Visceral hypersensitivity, gut-brain axis dysregulation, altered intestinal microflora, post-infectious hypermotility, psychological stress.',
+ 'Dietary modification (Low FODMAP trial), adequate dietary fiber titration, stress management techniques, regular physical activity.',
+ 'Chronic / Relapsing', 'NICE Guidelines / MedlinePlus'),
+
+(17, 'Peptic ulcer disease',
+ 'A focal mucosal defect extending through the muscularis mucosae of the stomach wall or proximal duodenum.',
+ 'Chronic Helicobacter pylori infection, prolonged high-dose NSAID or aspirin therapy, tobacco smoking.',
+ 'Discontinuation of ulcerogenic medications, H. pylori eradication therapy if indicated, prompt medical evaluation if black tarry stools.',
+ 'Severe', 'WHO / NIDDK'),
+
+(18, 'Constipation',
+ 'A prevalent functional or secondary disorder manifesting with infrequent bowel evacuation, hard stools, and excessive straining.',
+ 'Inadequate dietary fiber intake, insufficient hydration, physical inactivity, dysmotility, pelvic floor dysfunction, opiate medications.',
+ 'Increase dietary soluble and insoluble fiber gradually, drink at least 2 liters of water daily, establish unhurried regular toilet routines.',
+ 'Mild to Moderate', 'NHS / MedlinePlus'),
+
+(19, 'Gallstones',
+ 'Solid concretions formed inside the gallbladder lumen from bile components (cholesterol or bilirubin pigments).',
+ 'Super-saturation of bile with cholesterol, gallbladder hypomotility, accelerated cholesterol crystal nucleation, hemolytic disorders.',
+ 'Low-fat dietary regimen, avoidance of rapid weight loss, seeking prompt emergency surgical evaluation for unremitting right upper quadrant pain.',
+ 'Moderate to Urgent', 'NIDDK / NHS'),
+
+(20, 'Hepatitis',
+ 'Inflammatory injury of hepatocytes with cellular degeneration and impaired biliary excretion.',
+ 'Hepatotropic viruses (Hepatitis A, B, C, E), hepatotoxic alcohol consumption, idiosyncratic drug toxicity (paracetamol overdose), autoimmune attack.',
+ 'Strict cessation of alcohol and hepatotoxic drugs, rest, barrier precautions, specialist hepatology clinical evaluation and serologic testing.',
+ 'Severe to Urgent', 'WHO Hepatitis Technical Guidance'),
+
+(21, 'Appendicitis',
+ 'Acute luminal obstruction and progressive bacterial inflammation of the vermiform appendix.',
+ 'Fecalith impaction, lymphoid follicular hyperplasia, foreign bodies, or parasitic luminal obstruction.',
+ 'Immediate emergency department surgical evaluation; strict NPO (nil per os/no food or water), avoidance of laxatives or heating pads.',
+ 'Emergency / Critical', 'NHS / American College of Emergency Physicians'),
+
+(22, 'Migraine',
+ 'A primary neurovascular headache disorder featuring recurrent attacks of unilateral, pulsating head pain accompanied by sensory sensitivities.',
+ 'Cortical spreading depression, trigeminovascular activation, neurogenic inflammation, fluctuating neurotransmitter (serotonin) levels.',
+ 'Rest in a quiet, dark room; cold compresses applied to forehead; avoiding known triggers (aged cheeses, skipped meals, sleep irregularity).',
+ 'Moderate to Severe', 'International Headache Society (IHS) Guidelines'),
+
+(23, 'Tension headache',
+ 'The most prevalent primary headache type presenting with bilateral, non-pulsatile band-like pressure across cranial vaults.',
+ 'Pericranial myofascial tenderness, emotional stress, cervical musculoskeletal strain, eye strain, insufficient sleep.',
+ 'Posture correction during screen usage, stress reduction techniques, gentle neck stretches, hydration, mild non-habit-forming analgesics.',
+ 'Mild to Moderate', 'MedlinePlus / NHS'),
+
+(24, 'Meningitis',
+ 'Acute and potentially life-threatening inflammation of the protective arachnoid and pia leptomeningeal membranes encasing brain and spinal cord.',
+ 'Bacterial pathogens (Neisseria meningitidis, Streptococcus pneumoniae), viral enteroviruses, HSV, fungal cryptococcus in immunosuppressed.',
+ 'Immediate emergency medical transport; do not delay for preliminary tests; parenteral antimicrobial therapy is time-critical.',
+ 'Emergency / Life-threatening', 'WHO Meningitis Factsheet / CDC'),
+
+(25, 'Vertigo',
+ 'A vestibular illusion of rotational motion, spinning, or tilting of the self or surroundings caused by peripheral or central vestibular imbalance.',
+ 'Benign paroxysmal positional vertigo (canalithiasis), vestibular neuritis, Ménière disease, labyrinthitis.',
+ 'Avoid sudden head repositioning, take fall precautions, rise slowly from supine position, vestibular rehabilitation maneuvers under supervision.',
+ 'Moderate', 'NHS / American Academy of Otolaryngology'),
+
+(26, 'Peripheral neuropathy',
+ 'Functional damage or disease affecting peripheral sensory, motor, or autonomic nervous system fibers.',
+ 'Chronic diabetes mellitus (diabetic polyneuropathy), vitamin B12 deficiency, alcohol misuse, neurotoxic chemotherapeutic medications.',
+ 'Daily foot skin inspection, blood glucose optimization, smoking cessation, avoidance of tight constriction, consultation with neurologist.',
+ 'Chronic / Progressive', 'NINDS / NHS'),
+
+(27, 'Urinary tract infection (UTI)',
+ 'Bacterial colonization and inflammatory invasion of the lower urinary tract mucosa (urethritis and cystitis).',
+ 'Ascending bacterial migration into the sterile bladder, predominantly uropathogenic Escherichia coli (80-85%).',
+ 'Drink ample fluids to flush urinary bladder, avoid holding urine, wipe front-to-back, obtain urine analysis and culture for targeted therapy.',
+ 'Moderate', 'CDC UTI Guidelines / NHS'),
+
+(28, 'Kidney stones',
+ 'Hard crystalline mineral and acid salt deposits concentrated within the renal calyces or ureteral lumen.',
+ 'Inadequate fluid intake, hypercalciuria, hyperuricosuria, excessive dietary sodium/oxalate, primary hyperparathyroidism.',
+ 'High volume oral hydration (water), strain urine for stone analysis, emergency hospital attendance if unremitting flank pain or fever.',
+ 'Severe to Urgent', 'American Urological Association / MedlinePlus'),
+
+(29, 'Type 2 diabetes',
+ 'A chronic metabolic disease characterized by persistent hyperglycemia resulting from progressive insulin resistance and relative secretory deficiency.',
+ 'Combination of lifestyle factors (visceral obesity, physical inactivity, hypercaloric diet) and polygenic genetic susceptibility.',
+ 'Regular glycemic self-monitoring, structured dietary counseling, regular aerobic exercise, adherence to prescribed metabolic medications.',
+ 'Chronic / Systemic', 'American Diabetes Association (ADA) Standards of Care'),
+
+(30, 'Hypothyroidism',
+ 'A common endocrine deficiency disorder wherein the thyroid gland fails to synthesize adequate triiodothyronine (T3) and thyroxine (T4).',
+ 'Autoimmune Hashimoto thyroiditis, post-radioiodine ablation, dietary iodine insufficiency, thyroid surgical resection.',
+ 'Adherence to daily levothyroxine taken on an empty stomach with plain water, periodic serum thyroid stimulating hormone (TSH) monitoring.',
+ 'Chronic / Manageable', 'American Thyroid Association / NHS'),
+
+(31, 'Hyperthyroidism',
+ 'Clinical syndrome resulting from excessive endogenous synthesis and peripheral secretion of thyroid hormones.',
+ 'Graves disease (autoimmune thyroid receptor antibodies), toxic multinodular goiter, toxic solitary adenoma, subacute thyroiditis.',
+ 'Medical supervision for antithyroid medications (carbimazole/methimazole) or beta-blockers, avoiding excess iodine, cardiology review for arrhythmia.',
+ 'Moderate to Severe', 'American Thyroid Association / NHS'),
+
+(32, 'Iron-deficiency anemia',
+ 'Hematologic condition where inadequate elemental iron stores prevent sufficient erythropoietic hemoglobin synthesis.',
+ 'Chronic occult gastrointestinal blood loss, heavy menstrual bleeding (menorrhagia), impaired intestinal iron absorption (celiac), deficient diet.',
+ 'Investigate underlying source of blood loss with a physician, dietary iron-rich food consumption with Vitamin C, oral iron supplement adherence.',
+ 'Moderate', 'WHO Anemia Technical Guidance / NHS'),
+
+(33, 'Allergic conjunctivitis',
+ 'Immunoglobulin E (IgE)-mediated allergic inflammation of the ocular bulbar and palpebral conjunctiva.',
+ 'Seasonal aeroallergens (grass/tree pollen) or perennial environmental allergens (dust mites, animal fur proteins).',
+ 'Cold ocular compresses, artificial tear lubricants, avoiding eye rubbing (prevents mast cell degranulation), topical antihistamine eye drops.',
+ 'Mild', 'American Academy of Ophthalmology / NHS'),
+
+(34, 'Infective conjunctivitis',
+ 'Infectious microbial inflammation of the transparent conjunctival membrane lining the eyelid and sclera.',
+ 'Adenoviruses (viral pink eye), Staphylococcus aureus, Streptococcus pneumoniae, Haemophilus influenzae.',
+ 'Strict hand hygiene, separate face towels and pillowcases, avoid contact lens wear until resolved, consult physician if photophobia emerges.',
+ 'Mild to Moderate', 'CDC Conjunctivitis Guidance / NHS'),
+
+(35, 'Dermatitis',
+ 'Eczematous pruritic inflammation of the epidermal and dermal skin layers featuring erythema, papules, and xerosis.',
+ 'Atopic diathesis, direct contact with chemical allergens (contact dermatitis), compromised epidermal ceramide barrier.',
+ 'Frequent liberal application of fragrance-free emollients, tepid short showers, avoid known harsh detergents, mild topical corticosteroids.',
+ 'Mild to Moderate', 'National Eczema Association / NHS'),
+
+(36, 'Urticaria',
+ 'Vascular skin reaction featuring transient, intensely pruritic, erythematous edematous wheals (hives).',
+ 'Mast cell degranulation and histamine release provoked by viral infections, medications, food allergens, temperature extremes, or autoantibodies.',
+ 'Cool baths, loose cotton clothing, non-sedating oral second-generation H1 antihistamines, seek immediate emergency care if lip/tongue/throat swells.',
+ 'Moderate (Emergency if anaphylaxis)', 'EAACI/GA²LEN/EDF Guidelines'),
+
+(37, 'Fungal skin infection',
+ 'Superficial cutaneous dermatophytosis of keratinized epidermal tissues (tinea corporis, cruris, or pedis).',
+ 'Anthropophilic or zoophilic dermatophyte fungi (Trichophyton, Microsporum, Epidermophyton) or Candida species.',
+ 'Keep affected cutaneous areas clean and completely dry, avoid sharing towels or footwear, topical antifungal cream application.',
+ 'Mild', 'CDC Fungal Diseases / NHS'),
+
+(38, 'Otitis media',
+ 'Infection and inflammation of the middle ear space located directly posterior to the tympanic membrane.',
+ 'Eustachian tube mucosal dysfunction following viral rhinopharyngitis leading to bacterial entrapment (Streptococcus pneumoniae, H. influenzae).',
+ 'Adequate analgesia, warm compresses, medical physician evaluation for antibiotic indications or tympanic membrane perforation.',
+ 'Moderate', 'American Academy of Pediatrics / NHS'),
+
+(39, 'Otitis externa',
+ 'Diffuse inflammation and cellulitis of the external auditory canal skin ("swimmer ear").',
+ 'Moisture breakdown of canal skin barrier allowing bacterial infection (Pseudomonas aeruginosa, Staphylococcus aureus) or fungal overgrowth.',
+ 'Keep ear canal strictly dry during bathing, avoid inserting cotton swabs or foreign objects, targeted topical antimicrobial/corticosteroid drops.',
+ 'Mild to Moderate', 'American Academy of Otolaryngology / NHS'),
+
+(40, 'Osteoarthritis',
+ 'Degenerative joint disease featuring progressive articular cartilage breakdown, subchondral bone remodeling, and osteophyte formation.',
+ 'Mechanical biomechanical joint wear, prior joint trauma, advanced age, obesity, repetitive joint stress.',
+ 'Low-impact regular physical exercise (swimming, cycling), weight management to unload weight-bearing joints, physical therapy, joint protection.',
+ 'Chronic / Progressive', 'OARSI / NHS Guidelines'),
+
+(41, 'Rheumatoid arthritis',
+ 'Systemic autoimmune inflammatory disorder causing persistent bilateral symmetric synovial joint destruction.',
+ 'Autoimmune destruction directed against synovial membranes mediated by anti-CCP antibodies and rheumatoid factor.',
+ 'Early specialist rheumatologist evaluation for disease-modifying antirheumatic drugs (DMARDs), regular gentle joint mobility, smoking cessation.',
+ 'Severe / Chronic', 'American College of Rheumatology / NHS'),
+
+(42, 'Fibromyalgia',
+ 'A centralized neurosensory pain disorder characterized by widespread musculoskeletal tenderness, unrefreshing sleep, and profound fatigue.',
+ 'Central sensitization, altered central nervous system pain modulation, neurotransmitter imbalance, neuroendocrine dysfunction.',
+ 'Graded aerobic exercise, cognitive behavioral therapy (CBT), consistent sleep hygiene routines, gentle aquatic physiotherapy.',
+ 'Chronic', 'American College of Rheumatology / MedlinePlus'),
+
+(43, 'Insomnia',
+ 'Persistent difficulty with sleep initiation, maintenance, or non-restorative sleep quality despite adequate opportunity.',
+ 'Circadian rhythm disruption, psychological hyperarousal, hyperactive sympathetic nervous system, caffeine or screen usage before bed.',
+ 'Cognitive Behavioral Therapy for Insomnia (CBT-I), strict sleep-wake schedule, removal of screens from bedroom, relaxing pre-sleep wind-down.',
+ 'Chronic', 'American Academy of Sleep Medicine / NHS'),
+
+(44, 'Anxiety disorders',
+ 'Group of mental health conditions characterized by persistent, excessive apprehension, autonomic arousal, and somatic tension.',
+ 'Amygdala hyperreactivity, genetic vulnerability, environmental stress, dysfunctional cognitive threat appraisal, neurotransmitter imbalance.',
+ 'Deep diaphragmatic breathing exercises, mindfulness meditation, cognitive restructuring, reduction of caffeine, consultation with mental health provider.',
+ 'Moderate to Chronic', 'WHO / NIMH / NHS'),
+
+(45, 'Dehydration',
+ 'Deficit in total body water volume accompanied by electrolyte disturbance impairing cellular physiological function.',
+ 'Excessive fluid loss from profuse sweating, sustained diarrhea, vomiting, severe polyuria, or inadequate fluid intake during warm weather.',
+ 'Immediate oral rehydration solutions with electrolytes, resting in a cool environment, emergency intravenous saline if confusion or hypotension occurs.',
+ 'Moderate to Critical', 'WHO / CDC Guidelines')
+ON DUPLICATE KEY UPDATE
+  `description` = VALUES(`description`),
+  `causes` = VALUES(`causes`),
+  `precautions` = VALUES(`precautions`),
+  `severity_information` = VALUES(`severity_information`),
+  `reference_source` = VALUES(`reference_source`);
