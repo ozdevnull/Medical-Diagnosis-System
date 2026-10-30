@@ -1,223 +1,234 @@
 # MDS — Medical Diagnosis System
 
-MDS (Medical Diagnosis System) is an educational symptom-based health triage and pharmaceutical exploration assistant built with **Java 25**, **JavaFX**, **FXML**, and **MariaDB / MySQL (XAMPP)**.
+MDS (Medical Diagnosis System) is an educational, symptom-based health assessment and pharmaceutical information application. It helps users explore possible health conditions based on selected symptoms and access information about related diseases and medicines.
+
+**Built with Java 25, JavaFX, FXML, CSS, and MariaDB/MySQL.**
 
 ---
 
-## 1. Technology Stack & Architecture
+## 1. Technology Stack
 
-- **Language**: Java 25 (OpenJDK / Eclipse Adoptium)
-- **UI Framework**: JavaFX (v25-ea+1)
-- **UI Structure**: FXML declarative layout with CSS styling
-- **Form Factor**: Fixed mobile portrait layout (390 × 844)
-- **Build System**: Apache Maven 3.9+
-- **Database**: MariaDB 10.4+ / MySQL 8.0+ via XAMPP
-- **JDBC Driver**: MariaDB Connector/J (`org.mariadb.jdbc:mariadb-java-client:3.3.3`)
-- **Base Package**: `com.mds`
+| Component | Technology |
+|---|---|
+| Language | Java 25 (OpenJDK) |
+| UI Framework | JavaFX 25 |
+| UI Design | FXML and CSS |
+| Layout | Mobile-style (390 × 844) |
+| Build Tool | Apache Maven 3.9+ |
+| Database | MariaDB 10.4+ / MySQL 8.0+ |
+| Connectivity | JDBC (MariaDB Connector/J 3.3.3) |
+| Base Package | `com.mds` |
 
-### Package Structure
+### Project Structure
 
 ```text
 com.mds/
-├── Main.java                        # JavaFX application entry point
-├── AppState.java                    # Thread-safe session state singleton
-├── SceneNavigator.java              # Centralized FXML page transitions
-├── AnimationUtils.java              # Polished UI micro-animations
+├── Main.java
+├── AppState.java
+├── SceneNavigator.java
+├── AnimationUtils.java
 │
 ├── database/
-│   └── DatabaseConnection.java      # Centralized MariaDB JDBC connection manager
+│   └── DatabaseConnection.java
 │
 ├── model/
-│   ├── Symptom.java                 # Symptom entity model
-│   ├── Disease.java                 # Disease entity model with association weights
-│   ├── Medicine.java                # Educational pharmaceutical model
-│   ├── DiseaseMatch.java            # Weighted similarity match result model
-│   └── User.java                    # User authentication model
+│   ├── Symptom.java
+│   ├── Disease.java
+│   ├── Medicine.java
+│   ├── DiseaseMatch.java
+│   └── User.java
 │
 ├── dao/
-│   ├── SymptomDAO.java              # Symptom database operations
-│   ├── DiseaseDAO.java              # Disease retrieval, searching, and symptom mappings
-│   ├── MedicineDAO.java             # Medicine search and disease linkages
-│   └── UserDAO.java                 # SHA-256 authentication with demo fallback
+│   ├── SymptomDAO.java
+│   ├── DiseaseDAO.java
+│   ├── MedicineDAO.java
+│   └── UserDAO.java
 │
 ├── service/
-│   └── DiseaseMatchingService.java  # Weighted Jaccard-style clinical matching engine
+│   └── DiseaseMatchingService.java
 │
 └── controller/
-    ├── StartController.java         # Welcome / landing screen controller
-    ├── LoginController.java         # Authentication controller (SHA-256 + demo)
-    ├── DashboardController.java     # Dashboard (Triage, Disease Search, Medicine Search)
-    ├── SymptomController.java       # 50-symptom clinical checklist controller
-    └── ResultsController.java       # 5-card ranked differential assessment controller
+    ├── StartController.java
+    ├── LoginController.java
+    ├── DashboardController.java
+    ├── SymptomController.java
+    └── ResultsController.java
 ```
 
----
+### Architecture
 
-## 2. Database Configuration & Setup
-
-### Database Parameters
-- **Database**: `providencedb`
-- **Host**: `localhost`
-- **Port**: `3306`
-- **JDBC URL**: `jdbc:mariadb://localhost:3306/providencedb`
-- **Username**: `root`
-- **Password**: *(blank / default XAMPP)*
-
-### Setting Up the Database in XAMPP
-
-1. Launch **XAMPP Control Panel** and start the **MySQL** module (Port 3306).
-2. Open your browser and navigate to phpMyAdmin at `http://localhost/phpmyadmin/`.
-3. Create a new database named `providencedb` (Collation: `utf8mb4_unicode_ci`).
-4. Import the provided SQL files located in the `database/` folder:
-   - `database/schema.sql` (Creates all 6 tables and relational constraints)
-   - `database/seed_symptoms.sql` (Seeds all 50 symptoms)
-   - `database/seed_diseases.sql` (Seeds 45 medically grounded conditions)
-   - `database/seed_disease_symptoms.sql` (Seeds 290 symptom-disease relationships)
-   - `database/seed_medicines.sql` (Seeds 20 educational pharmaceutical profiles)
-   - `database/seed_disease_medicines.sql` (Seeds 61 disease-medicine linkages)
-   - `database/seed_users.sql` (Seeds `admin` user with SHA-256 hashed password)
-
-Alternatively, run the single migration script:
-- `database/migrations/001_initial_schema.sql`
-
-Or execute via PowerShell:
-```powershell
-Get-Content database\schema.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-Get-Content database\seed_symptoms.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-Get-Content database\seed_diseases.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-Get-Content database\seed_disease_symptoms.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-Get-Content database\seed_medicines.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-Get-Content database\seed_disease_medicines.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-Get-Content database\seed_users.sql | & "C:\xampp\mysql\bin\mysql.exe" -u root
-```
+- **Model:** Represents symptoms, diseases, medicines, and users.
+- **DAO:** Handles database operations.
+- **Service:** Implements disease-matching calculations.
+- **Controller:** Manages UI interactions and navigation.
+- **Database:** Stores application data and relationships.
 
 ---
 
-## 3. Standard 50 Symptoms
+## 2. Database Setup
 
-The database seeds the exact 50 symptoms used in `SymptomController.java`:
+### Configuration
 
-| # | Symptom Name | # | Symptom Name |
-|---|--------------|---|--------------|
-| 1 | Fever | 26 | Sweating |
-| 2 | Chills | 27 | Skin rash |
-| 3 | Headache | 28 | Itching |
-| 4 | Fatigue | 29 | Red eyes |
-| 5 | Weakness | 30 | Watery eyes |
-| 6 | Dizziness | 31 | Loss of smell |
-| 7 | Nausea | 32 | Loss of taste |
-| 8 | Vomiting | 33 | Ear pain |
-| 9 | Loss of appetite | 34 | Frequent urination |
-| 10 | Abdominal pain | 35 | Painful urination |
-| 11 | Diarrhea | 36 | Increased thirst |
-| 12 | Constipation | 37 | Swelling |
-| 13 | Cough | 38 | Palpitations |
-| 14 | Dry cough | 39 | Blurred vision |
-| 15 | Phlegm | 40 | Difficulty sleeping |
-| 16 | Sore throat | 41 | Anxiety/restlessness |
-| 17 | Runny nose | 42 | Yellowing of skin/eyes |
-| 18 | Stuffy nose | 43 | Dark urine |
-| 19 | Sneezing | 44 | Pale stools |
-| 20 | Shortness of breath | 45 | Neck stiffness |
-| 21 | Chest pain | 46 | Sensitivity to light |
-| 22 | Wheezing | 47 | Hair loss |
-| 23 | Muscle pain | 48 | Sore muscles |
-| 24 | Joint pain | 49 | Heartburn |
-| 25 | Back pain | 50 | Bloating |
+| Parameter | Value |
+|---|---|
+| Database | `providencedb` |
+| Host | `localhost` |
+| Port | `3306` |
+| JDBC URL | `jdbc:mariadb://localhost:3306/providencedb` |
+| Username | `root` |
+| Password | Blank (default XAMPP configuration) |
 
----
+### Installation
 
-## 4. Weighted Matching Algorithm
+1. Install and launch XAMPP.
+2. Start the **MySQL** service on port `3306`.
+3. Open [phpMyAdmin](http://localhost/phpmyadmin/).
+4. Create a database named `providencedb`.
+5. Select the `utf8mb4_unicode_ci` collation.
+6. Import the SQL files in this order:
 
-The matching engine uses a clinical weighted Jaccard-style similarity metric:
+| SQL File | Description |
+|---|---|
+| `schema.sql` | Creates six database tables and relationships |
+| `seed_symptoms.sql` | Inserts 50 symptoms |
+| `seed_diseases.sql` | Inserts 45 diseases |
+| `seed_disease_symptoms.sql` | Inserts 290 disease-symptom associations |
+| `seed_medicines.sql` | Inserts 20 medicine profiles |
+| `seed_disease_medicines.sql` | Inserts 61 disease-medicine associations |
+| `seed_users.sql` | Creates the demonstration account |
 
-### Mathematical Definition
-- $S$ = Symptoms selected by the user.
-- $D$ = Symptoms associated with a candidate disease.
-- $u(s)$ = User-side importance weight of symptom $s$ (default = $5.0$ on the clinical 1–5 scale).
-- $a(d,s)$ = Documented disease association weight, between 1 and 5.
-
-### Step A: Weighted Intersection
-For shared symptoms $s \in (S \cap D)$:
-$$I(d) = \sum_{s \in (S \cap D)} \left[ u(s) \times \frac{a(d,s)}{5} \right]$$
-
-### Step B: Weighted Union
-$$U(d) = \sum_{s \in S} u(s) + \sum_{s \in D} a(d,s) - I(d)$$
-
-### Step C: Similarity Percentage
-$$\text{Match}(d) = \left[ \frac{I(d)}{U(d)} \right] \times 100\%$$
-
-Zero denominators are safely caught ($U(d) \le 0 \implies \text{Match}(d) = 0\%$).
+**Alternative:** Use `database/migrations/001_initial_schema.sql` if it contains the complete initial database setup.
 
 ---
 
-## 5. Worked Numerical Example
+## 3. Symptom Database
 
-Consider a patient selecting 3 symptoms:
-1. **Runny nose** ($u = 5.0$)
-2. **Stuffy nose** ($u = 5.0$)
-3. **Loss of smell** ($u = 5.0$)
+The application includes **50 predefined symptoms** covering multiple categories:
 
-Total user weight $\sum u(s) = 5.0 + 5.0 + 5.0 = 15.0$.
+- General: Fever, chills, fatigue, weakness and sweating.
+- Respiratory: Cough, sneezing, sore throat and breathing difficulties.
+- Digestive: Nausea, vomiting, abdominal pain and bloating.
+- Neurological: Headache, dizziness and light sensitivity.
+- Skin and sensory: Rashes, itching, loss of smell and taste.
+- Other: Chest pain, joint pain, neck stiffness and urinary symptoms.
 
-### Candidate 1: Common Cold
-Associated symptoms in `providencedb`:
-- Runny nose ($a=5$)
-- Stuffy nose ($a=5$)
-- Sneezing ($a=5$)
-- Sore throat ($a=4$)
-- Cough ($a=3$)
-- Fatigue ($a=2$)
-- Headache ($a=2$)
-- Watery eyes ($a=2$)
-
-Total disease weights $\sum a(d,s) = 5+5+5+4+3+2+2+2 = 28.0$.
-
-- **Shared symptoms**: Runny nose ($a=5$), Stuffy nose ($a=5$).
-- **Weighted Intersection**:
-  $$I(d) = \left(5.0 \times \frac{5}{5}\right) + \left(5.0 \times \frac{5}{5}\right) = 5.0 + 5.0 = 10.0$$
-- **Weighted Union**:
-  $$U(d) = 15.0 + 28.0 - 10.0 = 33.0$$
-- **Match Score**:
-  $$\text{Match}(d) = \frac{10.0}{33.0} \times 100\% = 30.30\% \approx 30\%$$
-
-### Candidate 2: COVID-19
-Associated symptoms include:
-- Loss of smell ($a=5$), Dry cough ($a=5$), Fever ($a=5$), Loss of taste ($a=5$), Fatigue ($a=4$), Shortness of breath ($a=4$), Muscle pain ($a=3$), Headache ($a=3$), Sore throat ($a=3$), Chills ($a=3$), Diarrhea ($a=2$), Chest pain ($a=2$).
-Total disease weights $\sum a(d,s) = 44.0$.
-
-- **Shared symptoms**: Loss of smell ($a=5$).
-- **Weighted Intersection**:
-  $$I(d) = 5.0 \times \frac{5}{5} = 5.0$$
-- **Weighted Union**:
-  $$U(d) = 15.0 + 44.0 - 5.0 = 54.0$$
-- **Match Score**:
-  $$\text{Match}(d) = \frac{5.0}{54.0} \times 100\% = 9.26\% \approx 9\%$$
-
-**Ranking Result**:
-1. **Common cold** (30% similarity) — 2 hallmark symptoms matched.
-2. **COVID-19** (9% similarity) — 1 symptom matched.
+These symptoms are linked to diseases through weighted database associations.
 
 ---
 
-## 6. How to Run and Test
+## 4. Weighted Disease-Matching Algorithm
 
-### Compile the Application
+<details>
+<summary><strong>Click to expand the mathematical explanation</strong></summary>
+
+MDS uses a weighted Jaccard-style similarity algorithm to compare selected symptoms against disease-associated symptoms.
+
+### Mathematical Model
+
+Let:
+
+- \(S\) = User-selected symptoms.
+- \(D\) = Symptoms associated with a disease.
+- \(u(s)\) = User-side symptom weight (default: 5).
+- \(a(d,s)\) = Disease association weight (1–5).
+
+**Weighted Intersection:**
+
+\[
+I(d)=\sum_{s\in S\cap D}u(s)\times\frac{a(d,s)}{5}
+\]
+
+**Weighted Union:**
+
+\[
+U(d)=\sum_{s\in S}u(s)+\sum_{s\in D}a(d,s)-I(d)
+\]
+
+**Similarity Percentage:**
+
+\[
+Match(d)=\frac{I(d)}{U(d)}\times100
+\]
+
+If the denominator is zero or negative, the score is set to 0%.
+
+### Example
+
+Selected symptoms: Runny nose, Stuffy nose and Loss of smell.
+
+Each has a user weight of 5, giving a total user weight of 15.
+
+| Calculation | Common Cold | COVID-19 |
+|---|---:|---:|
+| Disease weight total | 28 | 44 |
+| Shared symptom weight | 10 | 5 |
+| Weighted union | 33 | 54 |
+| Similarity | **30.30%** | **9.26%** |
+
+The system ranks diseases by their calculated similarity scores and displays the highest-ranked results.
+
+*Similarity scores are algorithmic comparisons, not clinical diagnostic probabilities.*
+
+</details>
+
+---
+
+## 5. Application Features
+
+- **Welcome Screen:** Introduces the application.
+- **User Authentication:** Login with SHA-256 password hashing and demonstration login.
+- **Dashboard:** Central access to application features.
+- **Symptom Assessment:** Select from 50 predefined symptoms.
+- **Disease Matching:** Weighted comparison against database records.
+- **Results:** Displays up to five ranked disease matches.
+- **Disease Search:** Explore information about medical conditions.
+- **Medicine Search:** View medicine uses, side effects and precautions.
+
+---
+
+## 6. Running the Application
+
+### Prerequisites
+
+- Java JDK 25
+- Apache Maven 3.9+
+- XAMPP with MariaDB/MySQL
+- Configured `providencedb` database
+
+### Commands
+
+**Compile:**
 ```bash
 mvn clean compile
 ```
 
-### Run Unit and Integration Tests
+**Run Tests:**
 ```bash
 mvn test
 ```
 
-### Launch the JavaFX Application
+**Launch:**
 ```bash
 mvn javafx:run
 ```
 
-### Demonstration Credentials
-- **Username**: `admin`
-- **Password**: `1234`
-*(Quick-Fill button available on login page)*
+Ensure the XAMPP MySQL service is running before launching the application.
+
+---
+
+## 7. Demonstration Credentials
+
+| Field | Value |
+|---|---|
+| Username | `admin` |
+| Password | `1234` |
+
+A Quick-Fill option is also available on the login screen.
+
+---
+
+## 8. Disclaimer
+
+MDS is an educational software project demonstrating Java application development, database integration, and symptom-based disease matching.
+
+The results are generated using predefined symptom associations and mathematical similarity calculations. They are not medically validated diagnoses and should not be used to make treatment decisions. Consult a qualified healthcare professional for medical advice.
